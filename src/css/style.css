@@ -1,0 +1,42 @@
+.container {
+    margin-top: 60px;
+    position: relative;
+}
+
+.lastIssueComment {
+    margin-top: 30px;
+}
+
+#success_msg {
+    margin: 20px 0 20px 0;
+}
+
+.panBackground {
+    background: white;
+}
+
+.commandComment {
+    width: 500px;
+    height: 40px;
+}
+
+.panBackground {
+    background: wheat;
+}
+
+.panComponents {
+    margin: 30px 70px 30px 70px;
+}
+
+#close {
+    float:right;
+    display:inline-block;
+    padding:2px 5px;
+}
+
+#close:hover {
+    float:right;
+    display:inline-block;
+    padding:2px 5px;
+    color:#fff;
+}
