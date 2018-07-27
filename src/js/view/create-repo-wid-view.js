@@ -2,7 +2,8 @@ import { removeWidgetFromState } from '../controller/remove-widget'
 import { createRepositoryOnGithub } from '../controller/create-repo'
 
 //function to create widget for create repository
-const createRepoWidget = (recastRepoName, pan_id) => {
+let createRepoWidget = (recastRepoName, pan_id) => {
+//window.createRepoWidget = function (recastRepoName, pan_id){
     return `<div class='createGithubRepo panBackground' id='createGithubRepo_${pan_id}' >
     <div class='panComponents'>
     <span id='close' onclick='removeWidgetFromState(${pan_id})'>x</span>

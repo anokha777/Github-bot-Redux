@@ -3,7 +3,6 @@ import { createIssueWidget } from '../view/create-issue-wid-view';
 import { listAllIssues } from '../view/list-all-issues';
 
 import { recastAPIservice } from '../service/recastAPI-service';
-//import { render } from './controller/create-repo';
 import { store } from '../state/store';
 import { createRepoService } from '../service/create-repo-service';
 import { showErrorMsg, showSuccessMsg } from '../view/show-success-error'

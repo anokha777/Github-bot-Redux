@@ -38,5 +38,5 @@ module.exports = {
     plugins: [
         new htmlWebpackPlugin({ template: './index.html' })
     ],
-    // watch: true
+     watch: true
 }

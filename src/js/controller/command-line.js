@@ -1,7 +1,7 @@
 import { recastAPIservice } from '../service/recastAPI-service';
 import { store } from '../state/store';
 import { addCollaboratorCtrl } from './add-collaborator';
-
+import { getAllIssuesForRepoService } from '../service/get-all-issue-services'
 
 // on hit enter
 function hitEnter() {
@@ -33,15 +33,33 @@ function hitEnter() {
                             }
                     }); 
                 }else if(recastResponse.intents[0].slug === 'fetch-all-git-issue'){
-                    store.dispatch({
-                        type : recastResponse.intents[0].slug, 
-                        data: {taskWidgetName: recastResponse.intents[0].slug, 
-                                repositoryName: recastResponse.entities.git_repo[0].value
-                            }
-                    }); 
+
+                    getAllIssuesForRepoService(recastResponse.entities.git_repo[0].value).then((gitAllIssueRes) => {
+                        console.log('in command line - gitAllIssueRes ='+gitAllIssueRes);
+                        store.dispatch({
+                            type : recastResponse.intents[0].slug, 
+                            data: {taskWidgetName: recastResponse.intents[0].slug, 
+                                    repositoryName: recastResponse.entities.git_repo[0].value,
+                                    listOfIssues : gitAllIssueRes
+                                }
+                        });
+                    });
+
+                     
                 }else if(recastResponse.intents[0].slug === 'add-git-coleborator'){
                     addCollaboratorCtrl(recastResponse.entities.git_repo[0].value, recastResponse.entities.git_collaborator[0].value);
                 }
+                // else if(recastResponse.intents[0].slug === 'fetch-all-git-issue'){
+
+                //     getAllIssuesForRepoCtrl(recastResponse.entities.git_repo[0].value);
+                //     // store.dispatch({
+                //     //     type : recastResponse.intents[0].slug, 
+                //     //     data: {taskWidgetName: recastResponse.intents[0].slug, 
+                //     //             repositoryName: recastResponse.entities.git_repo[0].value
+                //     //         }
+                //     // }); 
+                // }
+
 
             }).catch(function(err){
                 console.log(err, 'error in main.js ...-');
